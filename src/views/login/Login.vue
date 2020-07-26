@@ -23,21 +23,20 @@
     </div>
 </template>
 <script>
-import { reqLogin } from "@/api/login";
+// import { reqLogin } from "@/api/login";
 
 export default {
     name: "login",
     data() {
         return {
             form: {
-                userName: "yjj",
-                userPwd: "147414"
+                userName: "",
+                userPwd: ""
             }
         };
     },
     created() {
         // this.onSignIn();
-        this.onWebSocket()
     },
 
     mounted() {},
@@ -45,41 +44,18 @@ export default {
         /* 登录按钮 */
         onSignIn() {
             console.log(this.form);
-            reqLogin()
-                .then(res => {
-                    console.log(res);
-                    // localStorage.setItem("token", res.token);
-                })
-                .catch(err => {
-                    console.log("登录失败", err);
-                });
+            // reqLogin()
+            //     .then(res => {
+            //         console.log(res);
+            //         // localStorage.setItem("token", res.token);
+            //     })
+            //     .catch(err => {
+            //         console.log("登录失败", err);
+            //     });
 
-            // this.$router.push("test");
+            this.$router.push("/home/test");
         },
-        onWebSocket() {
-            let count = 1;
-            let ws = new WebSocket("ws://127.0.0.1:8888/websocket");
-            ws.onopen = function(evt) {
-                console.log("Connection open ...");
-                console.log(evt);
-                // ws.send("Hello WebSockets!");
-            };
-
-            ws.onmessage = function(evt) {
-                console.log("后端发来的数据: " + evt.data);
-                if (count++ == 10) ws.close();
-            };
-
-            ws.onclose = function(evt) {
-                console.log(evt);
-                console.log("Connection closed.");
-            };
-
-            ws.onerror = function(evt) {
-                console.log(evt);
-                console.log("error!!!");
-            };
-        }
+        
     }
 };
 </script>

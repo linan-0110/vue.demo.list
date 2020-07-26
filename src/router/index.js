@@ -4,6 +4,8 @@ import App from '../App.vue'
 import login from "../views/login/Login.vue";
 import home from "../views/home/Home.vue";
 
+import basicLine from "../views/basicLine/basicLine.vue";
+import pie from "../views/pie/pie.vue";
 import test from "../views/test/test.vue";
 
 Vue.use(VueRouter);
@@ -29,10 +31,20 @@ const routes = [
 		component: home,
 		children: [
 			{
-				path: '/test',
+				path: 'test',
 				name: 'test',
 				component: test
-			}
+			},
+			{
+				path: 'basicLine',
+				name: 'basicLine',
+				component: basicLine
+			},
+			{
+				path: 'pie',
+				name: 'pie',
+				component: pie
+			},
 		]
 	},
 	{
